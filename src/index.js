@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const connectDB = require("./configs/db");
 
 const app = express();
 
@@ -11,9 +12,13 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 });
 
-const port = 8000;
+connectDB().then(async () => {
+    const port = 8000;
+    app.listen(port, () => {
+        console.log(`Server listening on port ${port}`);
+    });
+    
+})
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-});
+
 
