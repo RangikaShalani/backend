@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors({ origin: "*" }));
 app.use(express.json());
-app.use("/api/app", routes);
+app.use("/api", routes);
 
 // app.get('/', (req, res) => {
 //     res.send('Hello World');
